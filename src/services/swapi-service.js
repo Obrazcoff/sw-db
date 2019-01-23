@@ -16,7 +16,7 @@ export default class SwApiService {
     return res.results;
   }
 
-  getAppPerson(id) {
+  getPerson(id) {
     return this.getResource(`/people/${id}/`);
   }
 
@@ -25,7 +25,7 @@ export default class SwApiService {
     return res.results;
   }
 
-  getAppPlanet(id) {
+  getPlanet(id) {
     return this.getResource(`/planets/${id}/`);
   }
 
@@ -34,7 +34,7 @@ export default class SwApiService {
     return res.results;
   }
 
-  getAppStarship(id) {
+  getStarship(id) {
     return this.getResource(`/starships/${id}/`);
   }
 }
