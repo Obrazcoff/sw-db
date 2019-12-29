@@ -80,8 +80,8 @@ export default class PersonDetails extends Component {
               <span>{eyeColor}</span>
             </li>
           </ul>
+          <ErrorButton />
         </div>
-        <ErrorButton />
       </div>
     );
   }
