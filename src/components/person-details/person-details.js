@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './person-details.css';
 import SwApiService from '../../services/swapi-service';
 import Spinner from '../spinner';
+import ErrorButton from '../error-button';
 
 export default class PersonDetails extends Component {
 
@@ -80,6 +81,7 @@ export default class PersonDetails extends Component {
             </li>
           </ul>
         </div>
+        <ErrorButton />
       </div>
     );
   }
