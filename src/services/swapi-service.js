@@ -46,7 +46,7 @@ export default class SwApiService {
     return item.url.match(idRegExp)[1];
   }
 
-  _transformPlanet(planet) {
+  _transformPlanet = (planet) => {
     return {
       id: this._extractId(planet),
       name: planet.name,
@@ -56,7 +56,7 @@ export default class SwApiService {
     };
   }
 
-  _transformStarship(starship) {
+  _transformStarship = (starship) => {
     return {
       id: this._extractId(starship),
       name: starship.name,
@@ -70,21 +70,14 @@ export default class SwApiService {
     };
   }
 
-  _transformPerson(person) {
+  _transformPerson = (person) => {
+    console.log(`Current person is ${JSON.stringify( person )}`);
     return {
       id: this._extractId(person),
       name: person.name,
       gender: person.gender,
-      birthYear: person.birthYear,
-      eyeColor: person.eyeColor,
+      birthYear: person.birth_year,
+      eyeColor: person.eye_color,
     };
   }
 }
-
-const swapi = new SwApiService();
-
-swapi.getAllPeople().then(people => {
-  people.forEach(person => {
-    console.log(person.name);
-  });
-});
