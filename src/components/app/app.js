@@ -2,18 +2,28 @@ import React, { Component } from 'react';
 
 import Header from '../header';
 import RandomPlanet from '../random-planet';
+import ErrorBoundry from '../error-boundry';
+
+import SwapiService from "../../services/swapi-service";
+
+import {
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails,
+  PersonList,
+  PlanetList,
+  StarshipList
+} from '../sw-components';
 
 import './app.css';
-import ErrorButton from '../error-button';
-import ErrorIndicator from '../error-indicator';
-import PeoplePage from '../people-page/people-page';
 
 export default class App extends Component {
 
+  swapiService = new SwapiService();
+
   state = {
-    showRandomPlanet: true,
-    hasError: false,
-  }
+    showRandomPlanet: true
+  };
 
   toggleRandomPlanet = () => {
     this.setState((state) => {
@@ -23,39 +33,32 @@ export default class App extends Component {
     });
   };
 
-  componentDidCatch() {
-    this.setState({ hasError: true });
-  }
-
   render() {
-
-    if(this.state.hasError) {
-      return <ErrorIndicator />;
-    }
 
     const planet = this.state.showRandomPlanet ?
       <RandomPlanet/> :
       null;
 
     return (
-      <div className="stardb-app container">
-        <Header />
-        { planet }
+      <ErrorBoundry>
+        <div className="stardb-app">
+          <Header />
+          { planet }
 
-        <div className="row mb2 button-row">
-          <button
-            className="toggle-planet btn btn-warning btn-lg"
-            onClick={this.toggleRandomPlanet}>
-            Toggle Random Planet
-          </button>
-          <ErrorButton />
+          <PersonDetails itemId={11} />
+
+          <PlanetDetails itemId={5} />
+
+          <StarshipDetails itemId={9} />
+
+          <PersonList />
+
+          <StarshipList />
+
+          <PlanetList />
+
         </div>
-
-        <PeoplePage />
-        <PeoplePage />
-        <PeoplePage />
-
-      </div>
+      </ErrorBoundry>
     );
   }
-};
+}

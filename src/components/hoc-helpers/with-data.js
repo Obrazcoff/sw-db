@@ -7,8 +7,7 @@ const withData = (View, getData) => {
   return class extends Component {
 
     state = {
-      data: null,
-      error: false
+      data: null
     };
 
     componentDidMount() {
@@ -17,29 +16,17 @@ const withData = (View, getData) => {
           this.setState({
             data
           });
-        })
-        .catch(this.onError);
-    }
-
-    onError = (err) => {
-      this.setState({
-        error: true,
-        loading: false
-      })
+        });
     }
 
     render() {
-      const { data, error } = this.state;
-
-      const errorMsg = error ? <ErrorIndicator /> : null;
+      const { data } = this.state;
 
       if (!data) {
         return <Spinner />;
       }
 
-      return <View {...this.props} data={data} >
-        { errorMsg }
-        </View>;
+      return <View {...this.props} data={data} />;
     }
   };
 };
