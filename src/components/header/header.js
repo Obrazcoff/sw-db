@@ -5,17 +5,17 @@ import './header.css';
 const Header = () => {
   return (
     <div className="header d-flex">
-      <h3>
+      <h3>{/* eslint-disable-next-line */}
         <a href="#">Star DB</a>
       </h3>
       <ul className="d-flex">
-        <li>
+        <li>{/* eslint-disable-next-line */}
           <a href="#">People</a>
         </li>
-        <li>
+        <li>{/* eslint-disable-next-line */}
           <a href="#">Planets</a>
         </li>
-        <li>
+        <li>{/* eslint-disable-next-line */}
           <a href="#">Starships</a>
         </li>
       </ul>
