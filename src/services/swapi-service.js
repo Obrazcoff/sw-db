@@ -84,7 +84,6 @@ export default class SwApiService {
   }
 
   _transformPerson = (person) => {
-    console.log(`Current person is ${JSON.stringify( person )}`);
     return {
       id: this._extractId(person),
       name: person.name,
